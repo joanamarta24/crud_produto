@@ -1,5 +1,6 @@
 package com.senai.crud_produto.interface_ui_controller;
 
+import com.senai.crud_produto.applicatio.dto.dto.MovimentacaoDTO;
 import com.senai.crud_produto.applicatio.dto.dto.ProdutoDTO;
 import com.senai.crud_produto.domain.entity.entity.Produto;
 import com.senai.crud_produto.applicatio.dto.service.ProdutoService;
@@ -53,4 +54,6 @@ public class ProdutoController {
     service.deletarProduto(id);
     return ResponseEntity.noContent().build();
 }
+@postMapping
+public  ResponseEntity<MovimentacaoDTO>
 

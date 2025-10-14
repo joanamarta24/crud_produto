@@ -1,5 +1,6 @@
 package com.senai.crud_produto.applicatio.dto.service;
 
+import com.senai.crud_produto.applicatio.dto.dto.MovimentacaoDTO;
 import com.senai.crud_produto.applicatio.dto.dto.ProdutoDTO;
 import com.senai.crud_produto.domain.entity.entity.Alimentos;
 import com.senai.crud_produto.domain.entity.entity.Limpeza;
@@ -52,5 +53,27 @@ public class ProdutoService {
     public void deletarProduto(String id){
         repository.deleteById(id);
     }
+    publlic MovimentacaoDTO>MovimentcaoResponse movimentarEstoque(MovimentacaoDTO.MovimentacaoRequest dto){
+       return  repository.findById(dto.idProduto())
+               .map(produto -> {
+               int novaQuantidade = switch (dto.tipoMovimentacao()){}
+                   case ENTRADA -> produto.getQuantidade() + dto.quantidade();
+                   case SAIDA -> {
+                       if (produto.getQuantidade() < dto.quantidade()){
+                           throw new RuntimeException("Quantidade insuficiente em estoque");
+                       }
+                       yield produto.getQuantidade() - dto.quantidade();
+                   }
+               };
+        .produto.setQuantidade(novaQuantidade);
+        repository.save(produto);
+        return new MovimentacaoDTO().MovimentacaoResponseDTO(
+                produto.getId(),
+                produto.getNome(),
+                dto.tipoMovimentacao(),
+                dto.quantidade(),
+                novaQuantidade
+        );
+    })
 }
 
