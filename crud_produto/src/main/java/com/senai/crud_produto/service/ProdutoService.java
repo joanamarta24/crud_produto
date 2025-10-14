@@ -54,5 +54,8 @@ public class ProdutoService {
        })
                .orElseThrow(()-> new RuntimeException("Produto não encontrado"));
     }
+    public void deletarProduto(String id){
+        repository.deleteById(id);
+    }
 }
 
