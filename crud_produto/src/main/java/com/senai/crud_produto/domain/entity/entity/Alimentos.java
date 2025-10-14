@@ -1,4 +1,4 @@
-package com.senai.crud_produto.entity;
+package com.senai.crud_produto.domain.entity.entity;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;

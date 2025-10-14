@@ -1,4 +1,4 @@
-package com.senai.crud_produto.entity;
+package com.senai.crud_produto.domain.entity.entity;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -12,6 +12,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 
-public class Limpeza extends  Produto{
+public class Limpeza extends Produto {
     private Boolean perfume;
 }

@@ -1,16 +1,11 @@
-package com.senai.crud_produto.service;
+package com.senai.crud_produto.applicatio.dto.service;
 
-import com.senai.crud_produto.dto.ProdutoDTO;
-import com.senai.crud_produto.entity.Alimentos;
-import com.senai.crud_produto.entity.Limpeza;
-import com.senai.crud_produto.repository.ProdutoRepository;
+import com.senai.crud_produto.applicatio.dto.dto.ProdutoDTO;
+import com.senai.crud_produto.domain.entity.entity.Alimentos;
+import com.senai.crud_produto.domain.entity.entity.Limpeza;
+import com.senai.crud_produto.domain.entity.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

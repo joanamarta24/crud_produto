@@ -1,8 +1,8 @@
-package com.senai.crud_produto.dto;
+package com.senai.crud_produto.applicatio.dto.dto;
 
-import com.senai.crud_produto.entity.Alimentos;
-import com.senai.crud_produto.entity.Limpeza;
-import com.senai.crud_produto.entity.Produto;
+import com.senai.crud_produto.domain.entity.entity.Alimentos;
+import com.senai.crud_produto.domain.entity.entity.Limpeza;
+import com.senai.crud_produto.domain.entity.entity.Produto;
 
 import java.math.BigDecimal;
 

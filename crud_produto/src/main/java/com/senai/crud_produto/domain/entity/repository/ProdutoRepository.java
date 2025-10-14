@@ -1,7 +1,6 @@
-package com.senai.crud_produto.repository;
+package com.senai.crud_produto.domain.entity.repository;
 
-import com.senai.crud_produto.dto.ProdutoDTO;
-import com.senai.crud_produto.entity.Produto;
+import com.senai.crud_produto.domain.entity.entity.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface  ProdutoRepository extends JpaRepository<Produto,String> {
