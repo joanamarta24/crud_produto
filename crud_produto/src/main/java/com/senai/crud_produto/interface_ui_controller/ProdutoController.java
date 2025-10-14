@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping ("/api/produtos")
@@ -29,4 +30,12 @@ public class ProdutoController {
         return ResponseEntity.created(URI.create("/api/produtos"+produtoCadastrado.id()))
                 .body(produtoCadastrado);
    }
+   @GetMapping
+    public ResponseEntity<List ProdutoDTO.ProdutoDTO.ProdutoResponse>>listarProdutos(){
+        return ResponseEntity.ok(service.listarProdutos());
+    }
+    @GetMapping("/{id}")
+        public ResponseEntity<ProdutoDTO.ProdutoResponse>buscarPorId(@PathVariable String id){
+        return ResponseEntity.ok(service.buscarPorId(id));
+        }
 }
