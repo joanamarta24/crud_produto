@@ -8,6 +8,7 @@ import com.senai.crud_produto.domain.entity.entity.Limpeza;
 import com.senai.crud_produto.domain.entity.entity.Produto;
 import com.senai.crud_produto.domain.entity.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,7 @@ public class ProdutoService {
     private final ProdutoRepository repository;
 
     @Transactional
-    public ProdutoDTO.ProdutoResponse cadastrarProduto(ProdutoDTO.ProdutoRequest dto) {
+    public ProdutoDTO.ProdutoResponse cadastrarProduto(@NotNull ProdutoDTO.ProdutoRequest dto) {
         // Validação básica
         if (dto.nome() == null || dto.nome().trim().isEmpty()) {
             throw new RuntimeException("Nome do produto é obrigatório");

@@ -1,99 +1,46 @@
 package com.senai.crud_produto.applicatio.dto;
 
-import com.senai.crud_produto.applicatio.dto.Enum.TipoProduto;
-import com.senai.crud_produto.domain.entity.entity.Alimentos;
 import com.senai.crud_produto.domain.entity.entity.Limpeza;
-import com.senai.crud_produto.domain.entity.entity.Produto;
 
-public class ProdutoResponse {
+import java.math.BigDecimal;
 
-    // Interface comum para todos os tipos de produto
-    public interface ProdutoResponseDTO {
-        String id();
-        String nome();
-        String marca();
-        java.math.BigDecimal preco();
-        Integer quantidade();
-        TipoProduto tipo();
+// Interface comum para todos os DTOs de produto
+public interface ProdutoResponse {
+    String id();
+    String nome();
+    String marca();
+    BigDecimal preco();
+    Integer quantidade();
+    ProdutoTipo tipo();
+
+    enum ProdutoTipo {
+        LIMPEZA, ALIMENTO
+    }
+}
+
+// Implementação para Limpeza
+public record LimpezaResponseDTO(
+        String id,
+        String nome,
+        String marca,
+        BigDecimal preco,
+        Integer quantidade,
+        String perfume
+) implements ProdutoResponse {
+
+    @Override
+    public ProdutoResponse.ProdutoTipo tipo() {
+        return ProdutoResponse.ProdutoTipo.LIMPEZA;
     }
 
-    // Factory para criar a resposta apropriada
-    public static ProdutoResponseDTO fromEntity(Produto produto) {
-        if (produto instanceof Alimentos alimento) {
-            return new ProdutoResponseDTO() {
-                @Override
-                public String id() {
-                    return alimento.getId().toString();
-                }
-
-                @Override
-                public String nome() {
-                    return alimento.getNome();
-                }
-
-                @Override
-                public String marca() {
-                    return alimento.getMarca();
-                }
-
-                @Override
-                public java.math.BigDecimal preco() {
-                    return alimento.getPreco();
-                }
-
-                @Override
-                public Integer quantidade() {
-                    return alimento.getQuantidade();
-                }
-
-                @Override
-                public ProdutoDTO.TipoProduto tipo() {
-                    return ProdutoDTO.TipoProduto.ALIMENTO;
-                }
-
-                // Método extra específico para alimentos
-                public Boolean perecivel() {
-                    return alimento.getPerecivel();
-                }
-            };
-        } else if (produto instanceof Limpeza limpeza) {
-            return new ProdutoResponseDTO() {
-                @Override
-                public String id() {
-                    return limpeza.getId().toString();
-                }
-
-                @Override
-                public String nome() {
-                    return limpeza.getNome();
-                }
-
-                @Override
-                public String marca() {
-                    return limpeza.getMarca();
-                }
-
-                @Override
-                public java.math.BigDecimal preco() {
-                    return limpeza.getPreco();
-                }
-
-                @Override
-                public Integer quantidade() {
-                    return limpeza.getQuantidade();
-                }
-
-                @Override
-                public ProdutoDTO.TipoProduto tipo() {
-                    return ProdutoDTO.TipoProduto.LIMPEZA;
-                }
-
-                // Método extra específico para limpeza
-                public String perfume() {
-                    return limpeza.getPerfume();
-                }
-            };
-        }
-        throw new RuntimeException("Tipo de produto inválido");
+    public static LimpezaResponseDTO fromEntity(Limpeza limpeza) {
+        return new LimpezaResponseDTO(
+                limpeza.getId().toString(),
+                limpeza.getNome(),
+                limpeza.getMarca(),
+                limpeza.getPreco(),
+                limpeza.getQuantidade(),
+                limpeza.getPerfume()
+        );
     }
 }

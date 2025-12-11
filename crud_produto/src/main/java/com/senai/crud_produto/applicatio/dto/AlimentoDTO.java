@@ -4,7 +4,7 @@ import com.senai.crud_produto.domain.entity.entity.Alimentos;
 
 import java.math.BigDecimal;
 
-public record AlimentoResponseDTO(
+public record AlimentoDTO(
         String id,
         String nome,
         String marca,
@@ -12,8 +12,8 @@ public record AlimentoResponseDTO(
         Integer quantidade,
         Boolean perecivel
 ) {
-    public static AlimentoResponseDTO fromEntity(Alimentos alimento) {
-        return new AlimentoResponseDTO(
+    public static AlimentoDTO fromEntity(Alimentos alimento) {
+        return new AlimentoDTO(
                 alimento.getId().toString(),
                 alimento.getNome(),
                 alimento.getMarca(),
