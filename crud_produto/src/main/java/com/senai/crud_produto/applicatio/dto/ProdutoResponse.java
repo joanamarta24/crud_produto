@@ -18,29 +18,3 @@ public interface ProdutoResponse {
     }
 }
 
-// Implementação para Limpeza
-public record LimpezaResponseDTO(
-        String id,
-        String nome,
-        String marca,
-        BigDecimal preco,
-        Integer quantidade,
-        String perfume
-) implements ProdutoResponse {
-
-    @Override
-    public ProdutoResponse.ProdutoTipo tipo() {
-        return ProdutoResponse.ProdutoTipo.LIMPEZA;
-    }
-
-    public static LimpezaResponseDTO fromEntity(Limpeza limpeza) {
-        return new LimpezaResponseDTO(
-                limpeza.getId().toString(),
-                limpeza.getNome(),
-                limpeza.getMarca(),
-                limpeza.getPreco(),
-                limpeza.getQuantidade(),
-                limpeza.getPerfume()
-        );
-    }
-}

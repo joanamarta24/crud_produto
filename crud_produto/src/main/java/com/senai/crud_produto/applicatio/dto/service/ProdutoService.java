@@ -55,7 +55,6 @@ public class ProdutoService {
     public ProdutoDTO.ProdutoResponse atualizarProduto(String id, ProdutoDTO.ProdutoRequest dto) {
         return repository.findById(id)
                 .map(produto -> {
-                    // Verifica se não está tentando mudar o tipo do produto
                     if ((produto instanceof Limpeza && dto.tipo() != ProdutoDTO.TipoProduto.LIMPEZA) ||
                             (produto instanceof Alimentos && dto.tipo() != ProdutoDTO.TipoProduto.ALIMENTO)) {
                         throw new RuntimeException("Não é possível alterar o tipo do produto");

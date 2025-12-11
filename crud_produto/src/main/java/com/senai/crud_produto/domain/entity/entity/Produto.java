@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 public abstract class Produto {
   @Id
   @GeneratedValue(strategy =GenerationType.UUID)
-  private String id;
+  private Long id;
   private String nome;
   private BigDecimal preco;
   private Integer quantidade;

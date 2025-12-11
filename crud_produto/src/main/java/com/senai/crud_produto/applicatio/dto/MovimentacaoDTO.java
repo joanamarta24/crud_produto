@@ -1,6 +1,7 @@
 package com.senai.crud_produto.applicatio.dto;
 
 import com.senai.crud_produto.applicatio.dto.Enum.TipoMovimentacao;
+import com.senai.crud_produto.domain.entity.entity.Produto;
 
 public class MovimentacaoDTO {
    public record MovimentacaoRequest(
@@ -33,6 +34,10 @@ public class MovimentacaoDTO {
                     request.quantidade(),
                     novaQuantidade
             );
+        }
+
+        public static MovimentacaoResponse fromMovimentacao(Produto produtoAtualizado, TipoMovimentacao tipoMovimentacao, int quantidade, int novaQuantidade) {
+            return null;
         }
     }
 }
