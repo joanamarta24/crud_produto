@@ -13,4 +13,12 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Alimentos extends Produto {
     private boolean perecivel;
+
+    public boolean getPerecivel() {
+        return perecivel;
+    }
+
+    public void setPerecivel(boolean perecivel) {
+        this.perecivel = perecivel;
+    }
 }
