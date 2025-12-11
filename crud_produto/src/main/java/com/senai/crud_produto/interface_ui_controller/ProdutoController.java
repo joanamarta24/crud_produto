@@ -1,8 +1,7 @@
 package com.senai.crud_produto.interface_ui_controller;
 
-import com.senai.crud_produto.applicatio.dto.dto.MovimentacaoDTO;
-import com.senai.crud_produto.applicatio.dto.dto.ProdutoDTO;
-import com.senai.crud_produto.domain.entity.entity.Produto;
+import com.senai.crud_produto.applicatio.dto.MovimentacaoDTO;
+import com.senai.crud_produto.applicatio.dto.ProdutoDTO;
 import com.senai.crud_produto.applicatio.dto.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,9 +1,8 @@
 package com.senai.crud_produto.applicatio.dto.service;
 
 import com.senai.crud_produto.applicatio.dto.dto.AlimentoResponse;
-import com.senai.crud_produto.applicatio.dto.dto.LimpezaResponse;
-import com.senai.crud_produto.applicatio.dto.dto.MovimentacaoDTO;
-import com.senai.crud_produto.applicatio.dto.dto.ProdutoDTO;
+import com.senai.crud_produto.applicatio.dto.MovimentacaoDTO;
+import com.senai.crud_produto.applicatio.dto.ProdutoDTO;
 import com.senai.crud_produto.domain.entity.entity.Alimentos;
 import com.senai.crud_produto.domain.entity.entity.Limpeza;
 import com.senai.crud_produto.domain.entity.entity.Produto;

@@ -1,6 +1,6 @@
-package com.senai.crud_produto.applicatio.dto.dto;
+package com.senai.crud_produto.applicatio.dto;
 
-import com.senai.crud_produto.applicatio.dto.dto.Enum.TipoProduto;
+import com.senai.crud_produto.applicatio.dto.Enum.TipoProduto;
 import com.senai.crud_produto.domain.entity.entity.Alimentos;
 import com.senai.crud_produto.domain.entity.entity.Limpeza;
 import com.senai.crud_produto.domain.entity.entity.Produto;

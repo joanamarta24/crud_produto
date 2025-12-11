@@ -1,7 +1,6 @@
-package com.senai.crud_produto.applicatio.dto.dto;
+package com.senai.crud_produto.applicatio.dto;
 
-import com.senai.crud_produto.applicatio.dto.dto.Enum.TipoMovimentacao;
-import lombok.Builder;
+import com.senai.crud_produto.applicatio.dto.Enum.TipoMovimentacao;
 
 public class MovimentacaoDTO {
    public record MovimentacaoRequest(

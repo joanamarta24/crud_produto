@@ -1,4 +1,4 @@
-package com.senai.crud_produto.applicatio.dto.dto;
+package com.senai.crud_produto.applicatio.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
