@@ -1,4 +1,4 @@
-package com.senai.crud_produto.applicatio.dto.dto;
+package com.senai.crud_produto.domain.entity.response;
 
 import com.senai.crud_produto.domain.entity.entity.Alimentos;
 
@@ -15,7 +15,6 @@ public class AlimentoResponse {
             Integer quantidade,
             Boolean perecivel
     ) {
-        // Método factory para criar a partir da entidade
         public static AlimentoResponseDTO fromEntity(Alimentos alimento) {
             return new AlimentoResponseDTO(
                     alimento.getId() != null ? alimento.getId().toString() : null,
@@ -27,7 +26,6 @@ public class AlimentoResponse {
             );
         }
 
-        // Método para converter para String (opcional)
         @Override
         public String toString() {
             return String.format("Alimento[id=%s, nome=%s, marca=%s, preco=%.2f, quantidade=%d, perecivel=%s]",
@@ -56,7 +54,6 @@ public class AlimentoResponse {
             }
         }
 
-        // Método para converter para entidade
         public Alimentos toEntity() {
             return Alimentos.builder()
                     .nome(this.nome)
@@ -67,8 +64,6 @@ public class AlimentoResponse {
                     .build();
         }
     }
-
-    // Record para atualização de Alimento (Update Request)
     public record AlimentoUpdateRequest(
             String nome,
             String marca,
@@ -76,7 +71,6 @@ public class AlimentoResponse {
             Integer quantidade,
             Boolean perecivel
     ) {
-        // Validações no construtor compacto
         public AlimentoUpdateRequest {
             if (quantidade != null && quantidade < 0) {
                 throw new IllegalArgumentException("Quantidade não pode ser negativa");
@@ -85,8 +79,6 @@ public class AlimentoResponse {
                 throw new IllegalArgumentException("Preço não pode ser negativo");
             }
         }
-
-        // Método para aplicar atualizações em uma entidade existente
         public void applyTo(Alimentos alimento) {
             if (this.nome != null) {
                 alimento.setNome(this.nome);
@@ -105,8 +97,6 @@ public class AlimentoResponse {
             }
         }
     }
-
-    // Record para listagem resumida de Alimentos
     public record AlimentoResumoResponse(
             String id,
             String nome,
@@ -124,8 +114,6 @@ public class AlimentoResponse {
             );
         }
     }
-
-    // Record para movimentação de estoque de Alimentos
     public record AlimentoMovimentacaoResponse(
             String idAlimento,
             String nomeAlimento,
@@ -150,16 +138,12 @@ public class AlimentoResponse {
         }
     }
 
-    // Métodos utilitários
+
     public static class AlimentoUtils {
 
-        // Verifica se o alimento está vencido (exemplo)
         public static boolean estaVencido(Alimentos alimento) {
-            // Lógica para verificar validade
             return false;
         }
-
-        // Calcula valor total em estoque
         public static BigDecimal calcularValorEstoque(Alimentos alimento) {
             if (alimento.getPreco() == null || alimento.getQuantidade() == null) {
                 return BigDecimal.ZERO;
@@ -167,7 +151,6 @@ public class AlimentoResponse {
             return alimento.getPreco().multiply(BigDecimal.valueOf(alimento.getQuantidade()));
         }
 
-        // Formata dados do alimento
         public static String formatarDados(Alimentos alimento) {
             return String.format(
                     "%s - %s (R$ %.2f) - %d unidades - %s",

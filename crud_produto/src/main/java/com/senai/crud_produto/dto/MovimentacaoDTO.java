@@ -1,7 +1,9 @@
-package com.senai.crud_produto.applicatio.dto;
+package com.senai.crud_produto.dto;
 
-import com.senai.crud_produto.applicatio.dto.Enum.TipoMovimentacao;
+import com.senai.crud_produto.dto.Enum.TipoMovimentacao;
 import com.senai.crud_produto.domain.entity.entity.Produto;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nullable;
 
 public class MovimentacaoDTO {
    public record MovimentacaoRequest(

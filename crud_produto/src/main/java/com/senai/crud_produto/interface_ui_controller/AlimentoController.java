@@ -1,7 +1,7 @@
 package com.senai.crud_produto.interface_ui_controller;
 
-import com.senai.crud_produto.applicatio.dto.dto.AlimentoResponse;
-import com.senai.crud_produto.applicatio.dto.service.ProdutoService;
+import com.senai.crud_produto.domain.entity.response.AlimentoResponse;
+import com.senai.crud_produto.dto.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

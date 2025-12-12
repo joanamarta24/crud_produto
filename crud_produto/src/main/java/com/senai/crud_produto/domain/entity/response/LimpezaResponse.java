@@ -1,4 +1,4 @@
-package com.senai.crud_produto.applicatio.dto;
+package com.senai.crud_produto.domain.entity.response;
 
 import com.senai.crud_produto.domain.entity.entity.Limpeza;
 

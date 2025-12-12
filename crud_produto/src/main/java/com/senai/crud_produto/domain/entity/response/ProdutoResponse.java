@@ -1,6 +1,4 @@
-package com.senai.crud_produto.applicatio.dto;
-
-import com.senai.crud_produto.domain.entity.entity.Limpeza;
+package com.senai.crud_produto.domain.entity.response;
 
 import java.math.BigDecimal;
 
@@ -14,7 +12,8 @@ public interface ProdutoResponse {
     ProdutoTipo tipo();
 
     enum ProdutoTipo {
-        LIMPEZA, ALIMENTO
+        LIMPEZA,
+        ALIMENTO
     }
 }
 

@@ -1,12 +1,13 @@
-package com.senai.crud_produto.applicatio.dto.service;
+package com.senai.crud_produto.dto.service;
 
-import com.senai.crud_produto.applicatio.dto.dto.AlimentoResponse;
-import com.senai.crud_produto.applicatio.dto.MovimentacaoDTO;
-import com.senai.crud_produto.applicatio.dto.ProdutoDTO;
+import com.senai.crud_produto.domain.entity.response.AlimentoResponse;
+import com.senai.crud_produto.dto.MovimentacaoDTO;
+import com.senai.crud_produto.dto.ProdutoDTO;
 import com.senai.crud_produto.domain.entity.entity.Alimentos;
 import com.senai.crud_produto.domain.entity.entity.Limpeza;
 import com.senai.crud_produto.domain.entity.entity.Produto;
 import com.senai.crud_produto.domain.entity.repository.ProdutoRepository;
+import com.senai.crud_produto.request.AlimentoRequest;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class ProdutoService {
     private final ProdutoRepository repository;
 
     @Transactional
-    public ProdutoDTO.ProdutoResponse cadastrarProduto(@NotNull ProdutoDTO.ProdutoRequest dto) {
+    public ProdutoDTO.ProdutoResponse cadastrarProduto(@NotNull @org.jetbrains.annotations.UnknownNullability AlimentoRequest dto) {
         // Validação básica
         if (dto.nome() == null || dto.nome().trim().isEmpty()) {
             throw new RuntimeException("Nome do produto é obrigatório");
@@ -68,7 +69,7 @@ public class ProdutoService {
                     // Apenas atualiza campos específicos se não forem nulos
                     if (produto instanceof Limpeza limpeza) {
                         if (dto.perfume() != null) {
-                            limpeza.setPerfume(dto.perfume());
+                            limpeza.setPerfume(Boolean.valueOf(dto.perfume()));
                         }
                     } else if (produto instanceof Alimentos alimentos) {
                         if (dto.perecivel() != null) {
@@ -125,12 +126,6 @@ public class ProdutoService {
                     );
 
                     // Opção 2: Se quiser usar método factory, primeiro crie ele no DTO:
-                    return MovimentacaoDTO.MovimentacaoResponse.fromMovimentacao(
-                        produtoAtualizado,
-                        dto.tipoMovimentacao(),
-                       dto.quantidade(),
-                        novaQuantidade
-                     );
                 })
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado para movimentação"));
     }
@@ -217,3 +212,4 @@ public class ProdutoService {
 
         repository.deleteById(id);
     }
+}

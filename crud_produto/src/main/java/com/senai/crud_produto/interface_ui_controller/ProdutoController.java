@@ -1,8 +1,11 @@
 package com.senai.crud_produto.interface_ui_controller;
 
-import com.senai.crud_produto.applicatio.dto.MovimentacaoDTO;
-import com.senai.crud_produto.applicatio.dto.ProdutoDTO;
-import com.senai.crud_produto.applicatio.dto.service.ProdutoService;
+import com.senai.crud_produto.request.LimpezaRequest;
+import com.senai.crud_produto.dto.MovimentacaoDTO;
+import com.senai.crud_produto.dto.ProdutoDTO;
+import com.senai.crud_produto.dto.service.ProdutoService;
+import com.senai.crud_produto.request.AlimentoRequest;
+import com.senai.crud_produto.request.ProdutoRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +18,36 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProdutoController {
     private final ProdutoService service;
+
+    @PostMapping
+    public ResponseEntity<ProdutoDTO.ProdutoResponse> criarLimpeza(
+            @RequestBody LimpezaRequest request) {
+        // É necessário converter LimpezaRequest para ProdutoDTO.ProdutoRequest
+        ProdutoDTO.ProdutoRequest produtoRequest = request.toProdutoRequest();
+        ProdutoDTO.ProdutoResponse response = service.cadastrarProduto(produtoRequest);
+
+        return ResponseEntity.created(URI.create("/api/produtos/" + response.getId())) // CORRIGIDO: usa getId()
+                .body(response);
+    }
+    @PostMapping("/alimento")
+    public ResponseEntity<ProdutoDTO.ProdutoResponse> criarAlimento(
+            @RequestBody AlimentoRequest request) {
+        // É necessário converter AlimentoRequest para ProdutoDTO.ProdutoRequest
+        ProdutoDTO.ProdutoRequest produtoRequest = request.toProdutoRequest();
+        ProdutoDTO.ProdutoResponse response = service.cadastrarProduto(produtoRequest);
+
+        return ResponseEntity.created(URI.create("/api/produtos/" + response.getId())) // CORRIGIDO: usa getId()
+                .body(response);
+    }
+
+    @PostMapping("/alimento")
+    public ResponseEntity<ProdutoDTO.ProdutoResponse> criarAlimento(
+            @RequestBody AlimentoRequest request) {
+        ProdutoDTO.ProdutoResponse response = service.cadastrarProduto(request);
+        return ResponseEntity.created(URI.create("/api/produtos/" + response.id()))
+                .body(response);
+    }
+
 
     // POST para cadastrar
     @PostMapping

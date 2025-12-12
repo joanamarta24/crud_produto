@@ -1,6 +1,7 @@
-package com.senai.crud_produto.applicatio.dto;
+package com.senai.crud_produto.dto;
 
 import com.senai.crud_produto.domain.entity.entity.Limpeza;
+import com.senai.crud_produto.domain.entity.response.ProdutoResponse;
 
 import java.math.BigDecimal;
 
